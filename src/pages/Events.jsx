@@ -1,5 +1,5 @@
-import React from 'react';
 import { Calendar, Clock, MapPin, Award } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import './Events.css';
 
 // Using local AI generated images if available, or placeholder falls back
@@ -47,6 +47,7 @@ const eventsData = [
 ];
 
 const Events = () => {
+    const navigate = useNavigate();
     return (
         <div className="events-page">
             <div className="events-header-section">
@@ -84,8 +85,11 @@ const Events = () => {
                                 </div>
 
                                 <button className="btn btn-secondary register-btn" onClick={() => {
-                                    document.getElementById('root').scrollIntoView();
-                                    window.location.href = "/#register";
+                                    navigate('/#register');
+                                    // Small delay to ensure navigation completes before scrolling
+                                    setTimeout(() => {
+                                        document.getElementById('register')?.scrollIntoView({ behavior: 'smooth' });
+                                    }, 100);
                                 }}>
                                     Register Now
                                 </button>

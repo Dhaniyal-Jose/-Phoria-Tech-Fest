@@ -13,8 +13,8 @@ const Ticket = ({ registrationData, onReset }) => {
     // The unique identifier for the ticket (could be the Supabase ID, or a mix of data)
     // We'll use the ID if we have it, else fallback to a combo of email/phone
     const ticketId = registrationData.id
-        ? `UPHORIA-25-TKT-${registrationData.id}`
-        : `UPHORIA-25-TKT-${registrationData.phone.slice(-4)}-${Date.now().toString().slice(-4)}`;
+        ? `UPHORIA-26-TKT-${registrationData.id}`
+        : `UPHORIA-26-TKT-${registrationData.phone.slice(-4)}-${Date.now().toString().slice(-4)}`;
 
     const handleCopyId = () => {
         navigator.clipboard.writeText(ticketId);
@@ -95,7 +95,7 @@ const Ticket = ({ registrationData, onReset }) => {
                     <div className="ticket-left">
                         <div className="ticket-branding">
                             <span className="text-gradient font-heading" style={{ fontSize: '1.8rem', fontWeight: 800 }}>µPhoria</span>
-                            <span className="ticket-year">2025</span>
+                            <span className="ticket-year">2026</span>
                         </div>
 
                         <div className="ticket-attendee-info">
@@ -111,7 +111,7 @@ const Ticket = ({ registrationData, onReset }) => {
                             <div className="info-row">
                                 <div className="info-group">
                                     <label>DATE</label>
-                                    <p>October 24-25</p>
+                                    <p>March 5-6</p>
                                 </div>
                                 <div className="info-group">
                                     <label>VENUE</label>
