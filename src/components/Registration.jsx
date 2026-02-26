@@ -44,16 +44,39 @@ const Registration = () => {
 
             if (error) throw error;
 
-            setStatus({ type: 'success', message: 'Registration successful! See you at µPhoria.' });
-            setRegisteredData({ ...formData, id: data && data.length > 0 ? data[0].id : null });
+            setStatus({ type: 'success', message: 'Registration successful! Opening WhatsApp to send your confirmation...' });
+            
+            const regId = data && data.length > 0 ? data[0].id : null;
+            setRegisteredData({ ...formData, id: regId });
+            
+            // WhatsApp Redirection Logic
+            const phoneStr = "YOUR_WHATSAPP_NUMBER_HERE"; // The user will need to change this if they want to route to a specific admin number. We'll use a generic placeholder or the user's number. For this demo, let's route to the event's official number from the design.
+            const officialPhone = "919876543210"; 
+            const message = `Hello \u00B5Phoria Team! \n\nI just registered for the Tech Fest.\n\n*Name:* ${formData.fullName}\n*Event:* ${formData.selectedEvent}\n*Record ID:* ${regId || 'N/A'}\n\nPlease confirm my entry pass!`;
+            const whatsappUrl = `https://wa.me/${officialPhone}?text=${encodeURIComponent(message)}`;
+            
+            setTimeout(() => {
+                window.open(whatsappUrl, '_blank');
+            }, 1000);
+
             setFormData({ fullName: '', email: '', phone: '', college: '', selectedEvent: 'Code Debugging', gender: 'Prefer not to say' });
         } catch (error) {
             console.error('Registration Error:', error);
             // Fallback for demo purposes if Supabase is unconfigured
             if (error.message && error.message.includes('placeholder')) {
                 // simulated success if env vars aren't set
-                setStatus({ type: 'success', message: 'Registration simulated (config not set up). Save real data when connected to Supabase.' });
+                setStatus({ type: 'success', message: 'Registration simulated (config not set up). Opening WhatsApp to send your confirmation...' });
                 setRegisteredData({ ...formData, id: 'DEMO' });
+                
+                // WhatsApp Redirection Logic (Fallback)
+                const officialPhoneDemo = "919876543210"; 
+                const messageDemo = `Hello \u00B5Phoria Team! \n\nI just registered for the Tech Fest.\n\n*Name:* ${formData.fullName}\n*Event:* ${formData.selectedEvent}\n*Record ID:* DEMO\n\nPlease confirm my entry pass!`;
+                const whatsappUrlDemo = `https://wa.me/${officialPhoneDemo}?text=${encodeURIComponent(messageDemo)}`;
+                
+                setTimeout(() => {
+                    window.open(whatsappUrlDemo, '_blank');
+                }, 1000);
+
                 setFormData({ fullName: '', email: '', phone: '', college: '', selectedEvent: 'Code Debugging', gender: 'Prefer not to say' });
             } else {
                 setStatus({ type: 'error', message: error.message || 'Something went wrong. Please try again later.' });
