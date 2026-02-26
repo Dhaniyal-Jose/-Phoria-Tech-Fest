@@ -50,9 +50,9 @@ const Registration = () => {
             setRegisteredData({ ...formData, id: regId });
             
             // WhatsApp Redirection Logic
-            const phoneStr = "YOUR_WHATSAPP_NUMBER_HERE"; // The user will need to change this if they want to route to a specific admin number. We'll use a generic placeholder or the user's number. For this demo, let's route to the event's official number from the design.
-            const officialPhone = "919876543210"; 
-            const message = `Hello \u00B5Phoria Team! \n\nI just registered for the Tech Fest.\n\n*Name:* ${formData.fullName}\n*Event:* ${formData.selectedEvent}\n*Record ID:* ${regId || 'N/A'}\n\nPlease confirm my entry pass!`;
+            const phoneStr = "919447217461"; 
+            const officialPhone = "919447217461"; 
+            const message = `Hello \u00B5Phoria Team! \n\nI just registered for the Tech Fest.\n\n*Name:* ${formData.fullName}\n*Event:* ${formData.selectedEvent}\n*Record ID:* ${regId || 'N/A'}\n\nPlease confirm my entry pass!\n\n*(Note: Here is my digital pass link: https://quickchart.io/qr?text=${encodeURIComponent(regId || 'N/A')}&size=200 )*`;
             const whatsappUrl = `https://wa.me/${officialPhone}?text=${encodeURIComponent(message)}`;
             
             setTimeout(() => {
@@ -69,8 +69,8 @@ const Registration = () => {
                 setRegisteredData({ ...formData, id: 'DEMO' });
                 
                 // WhatsApp Redirection Logic (Fallback)
-                const officialPhoneDemo = "919876543210"; 
-                const messageDemo = `Hello \u00B5Phoria Team! \n\nI just registered for the Tech Fest.\n\n*Name:* ${formData.fullName}\n*Event:* ${formData.selectedEvent}\n*Record ID:* DEMO\n\nPlease confirm my entry pass!`;
+                const officialPhoneDemo = "919447217461"; 
+                const messageDemo = `Hello \u00B5Phoria Team! \n\nI just registered for the Tech Fest.\n\n*Name:* ${formData.fullName}\n*Event:* ${formData.selectedEvent}\n*Record ID:* DEMO\n\nPlease confirm my entry pass!\n\n*(Note: Here is my digital pass link: https://quickchart.io/qr?text=DEMO&size=200 )*`;
                 const whatsappUrlDemo = `https://wa.me/${officialPhoneDemo}?text=${encodeURIComponent(messageDemo)}`;
                 
                 setTimeout(() => {
