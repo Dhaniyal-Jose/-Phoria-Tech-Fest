@@ -9,7 +9,7 @@ const Registration = () => {
         email: '',
         phone: '',
         college: '',
-        selectedEvent: 'Code Debugging (₹150)',
+        selectedEvent: 'Code Debugging',
         gender: 'Prefer not to say'
     });
     const [loading, setLoading] = useState(false);
@@ -46,7 +46,7 @@ const Registration = () => {
 
             setStatus({ type: 'success', message: 'Registration successful! See you at µPhoria.' });
             setRegisteredData({ ...formData, id: data && data.length > 0 ? data[0].id : null });
-            setFormData({ fullName: '', email: '', phone: '', college: '', selectedEvent: 'Code Debugging (₹150)', gender: 'Prefer not to say' });
+            setFormData({ fullName: '', email: '', phone: '', college: '', selectedEvent: 'Code Debugging', gender: 'Prefer not to say' });
         } catch (error) {
             console.error('Registration Error:', error);
             // Fallback for demo purposes if Supabase is unconfigured
@@ -54,7 +54,7 @@ const Registration = () => {
                 // simulated success if env vars aren't set
                 setStatus({ type: 'success', message: 'Registration simulated (config not set up). Save real data when connected to Supabase.' });
                 setRegisteredData({ ...formData, id: 'DEMO' });
-                setFormData({ fullName: '', email: '', phone: '', college: '', selectedEvent: 'Code Debugging (₹150)', gender: 'Prefer not to say' });
+                setFormData({ fullName: '', email: '', phone: '', college: '', selectedEvent: 'Code Debugging', gender: 'Prefer not to say' });
             } else {
                 setStatus({ type: 'error', message: error.message || 'Something went wrong. Please try again later.' });
             }
@@ -171,10 +171,10 @@ const Registration = () => {
                                     marginBottom: '1rem'
                                 }}
                             >
-                                <option value="Code Debugging (₹150)" style={{ background: '#0a0a0a' }}>Code Debugging (₹150)</option>
-                                <option value="UI/UX Design Challenge (₹350)" style={{ background: '#0a0a0a' }}>UI/UX Design Challenge (₹350)</option>
-                                <option value="Cyber Security CTF (₹699)" style={{ background: '#0a0a0a' }}>Cyber Security CTF (₹699)</option>
-                                <option value="Robotics Expo (FREE)" style={{ background: '#0a0a0a' }}>Robotics Expo (FREE)</option>
+                                <option value="Code Debugging" style={{ background: '#0a0a0a' }}>Code Debugging (₹150)</option>
+                                <option value="UI/UX Design Challenge" style={{ background: '#0a0a0a' }}>UI/UX Design Challenge (₹350)</option>
+                                <option value="Cyber Security CTF" style={{ background: '#0a0a0a' }}>Cyber Security CTF (₹699)</option>
+                                <option value="Robotics Expo" style={{ background: '#0a0a0a' }}>Robotics Expo (FREE)</option>
                             </select>
                         </div>
 

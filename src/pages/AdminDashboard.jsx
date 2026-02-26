@@ -6,16 +6,16 @@ import { Users, Download, LogOut, Trash2, Award } from 'lucide-react';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  BarElement,
-  ArcElement,
-  Title,
-  Tooltip,
-  Legend,
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    BarElement,
+    ArcElement,
+    Title,
+    Tooltip,
+    Legend,
 } from 'chart.js';
 import { Doughnut, Bar, Line } from 'react-chartjs-2';
 import CertificateTemplate from '../components/CertificateTemplate';
@@ -23,15 +23,15 @@ import './AdminDashboard.css';
 
 // Register ChartJS plugins
 ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  BarElement,
-  ArcElement,
-  Title,
-  Tooltip,
-  Legend
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    BarElement,
+    ArcElement,
+    Title,
+    Tooltip,
+    Legend
 );
 
 const AdminDashboard = () => {
@@ -237,7 +237,7 @@ const AdminDashboard = () => {
         acc[c] = (acc[c] || 0) + 1;
         return acc;
     }, {});
-    
+
     // Sort colleges by top 5
     const sortedColleges = Object.entries(collegeCounts).sort((a, b) => b[1] - a[1]).slice(0, 5);
 
@@ -258,7 +258,7 @@ const AdminDashboard = () => {
         acc[d] = (acc[d] || 0) + 1;
         return acc;
     }, {});
-    
+
     // Sort dates chronologically
     const sortedDates = Object.entries(dateCounts).sort((a, b) => new Date(a[0]) - new Date(b[0]));
 
@@ -383,7 +383,7 @@ const AdminDashboard = () => {
                                                 <td>{reg.email}</td>
                                                 <td>{reg.phone}</td>
                                                 <td>{reg.college}</td>
-                                                <td><span className="badge" style={{ fontSize: '0.7rem', padding: '0.2rem 0.5rem' }}>{reg.selected_event || 'All Events'}</span></td>
+                                                <td><span className="badge" style={{ fontSize: '0.7rem', padding: '0.2rem 0.5rem' }}>{(reg.selected_event || 'All Events').replace(/\s*\(.*?\)\s*/g, '')}</span></td>
                                                 <td>{new Date(reg.created_at).toLocaleDateString()}</td>
                                                 <td>
                                                     <div style={{ display: 'flex', gap: '0.5rem' }}>

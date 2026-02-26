@@ -21,7 +21,7 @@ const CertificateTemplate = forwardRef(({ name, event, date }, ref) => {
                         <p className="cert-text">
                             has successfully participated in the event
                         </p>
-                        <h4 className="cert-event">{event || 'Tech Event'}</h4>
+                        <h4 className="cert-event">{(event || 'Tech Event').replace(/\s*\(.*?\)\s*/g, '').trim()}</h4>
                         <p className="cert-text">
                             held as part of the uPhoria Tech Fest symposium.
                         </p>

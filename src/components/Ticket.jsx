@@ -119,7 +119,7 @@ const Ticket = ({ registrationData, onReset }) => {
                                 </div>
                                 <div className="info-group">
                                     <label>ACCESS</label>
-                                    <p className="highlight">{registrationData.selectedEvent ? registrationData.selectedEvent.toUpperCase() : 'ALL EVENTS'}</p>
+                                    <p className="highlight">{(registrationData.selectedEvent ? registrationData.selectedEvent.replace(/\s*\(.*?\)\s*/g, '').toUpperCase() : 'ALL EVENTS')}</p>
                                 </div>
                             </div>
                         </div>
