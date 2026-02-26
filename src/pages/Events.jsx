@@ -81,12 +81,6 @@ const Events = () => {
                                         <MapPin size={16} />
                                         <span>{event.location}</span>
                                     </div>
-                                    {event.price && (
-                                        <div className="meta-item prize">
-                                            <Award size={16} />
-                                            <span>Registration Fee: {event.price}</span>
-                                        </div>
-                                    )}
                                 </div>
 
                                 <button className="btn btn-secondary register-btn" onClick={() => {
