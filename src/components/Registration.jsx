@@ -44,20 +44,10 @@ const Registration = () => {
 
             if (error) throw error;
 
-            setStatus({ type: 'success', message: 'Registration successful! Opening WhatsApp to send your confirmation...' });
+            setStatus({ type: 'success', message: 'Registration successful! See you at µPhoria.' });
             
             const regId = data && data.length > 0 ? data[0].id : null;
             setRegisteredData({ ...formData, id: regId });
-            
-            // WhatsApp Redirection Logic
-            const phoneStr = "919447217461"; 
-            const officialPhone = "919447217461"; 
-            const message = `Hello \u00B5Phoria Team! \n\nI just registered for the Tech Fest.\n\n*Name:* ${formData.fullName}\n*Event:* ${formData.selectedEvent}\n*Record ID:* ${regId || 'N/A'}\n\nPlease confirm my entry pass!\n\n*(Note: Here is my digital pass link: https://quickchart.io/qr?text=${encodeURIComponent(regId || 'N/A')}&size=200 )*`;
-            const whatsappUrl = `https://wa.me/${officialPhone}?text=${encodeURIComponent(message)}`;
-            
-            setTimeout(() => {
-                window.open(whatsappUrl, '_blank');
-            }, 1000);
 
             setFormData({ fullName: '', email: '', phone: '', college: '', selectedEvent: 'Code Debugging', gender: 'Prefer not to say' });
         } catch (error) {
@@ -65,17 +55,8 @@ const Registration = () => {
             // Fallback for demo purposes if Supabase is unconfigured
             if (error.message && error.message.includes('placeholder')) {
                 // simulated success if env vars aren't set
-                setStatus({ type: 'success', message: 'Registration simulated (config not set up). Opening WhatsApp to send your confirmation...' });
+                setStatus({ type: 'success', message: 'Registration simulated (config not set up). Save real data when connected to Supabase.' });
                 setRegisteredData({ ...formData, id: 'DEMO' });
-                
-                // WhatsApp Redirection Logic (Fallback)
-                const officialPhoneDemo = "919447217461"; 
-                const messageDemo = `Hello \u00B5Phoria Team! \n\nI just registered for the Tech Fest.\n\n*Name:* ${formData.fullName}\n*Event:* ${formData.selectedEvent}\n*Record ID:* DEMO\n\nPlease confirm my entry pass!\n\n*(Note: Here is my digital pass link: https://quickchart.io/qr?text=DEMO&size=200 )*`;
-                const whatsappUrlDemo = `https://wa.me/${officialPhoneDemo}?text=${encodeURIComponent(messageDemo)}`;
-                
-                setTimeout(() => {
-                    window.open(whatsappUrlDemo, '_blank');
-                }, 1000);
 
                 setFormData({ fullName: '', email: '', phone: '', college: '', selectedEvent: 'Code Debugging', gender: 'Prefer not to say' });
             } else {
