@@ -1,0 +1,119 @@
+.location-section {
+    padding: 6rem 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.location-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.location-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.location-header h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: 800;
+}
+
+.location-header p {
+    color: var(--text-secondary);
+    font-size: 1.125rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.location-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem;
+    border-radius: 20px;
+    align-items: center;
+}
+
+@media (min-width: 900px) {
+    .location-content {
+        grid-template-columns: 1fr 1.5fr;
+        padding: 3rem;
+        gap: 4rem;
+    }
+}
+
+.location-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.venue-details {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+
+.venue-icon {
+    background-color: rgba(139, 92, 246, 0.15);
+    padding: 1rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+}
+
+.venue-details h3 {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(to right, #fff, var(--text-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.venue-address {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+.location-cta {
+    margin-top: 1rem;
+}
+
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    background: linear-gradient(135deg, var(--accent-1) 0%, var(--accent-2) 100%);
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    color: white;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.6);
+}
+
+.map-container {
+    border-radius: 16px;
+    overflow: hidden;
+    height: 350px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (min-width: 900px) {
+    .map-container {
+        height: 450px;
+    }
+}

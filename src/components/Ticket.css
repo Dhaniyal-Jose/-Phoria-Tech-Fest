@@ -1,0 +1,287 @@
+.ticket-success-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.ticket-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.ticket-header h3 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+
+.ticket-header p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.ticket-wrapper {
+    /* Adding padding so boxShadow doesn't get clipped when building canvas */
+    padding: 20px;
+    margin-bottom: 1rem;
+    max-width: 100%;
+}
+
+.ticket {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 700px;
+    background: rgba(15, 15, 15, 0.8);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(139, 92, 246, 0.4);
+    border-radius: 16px;
+    box-shadow: 0 25px 50px -12px rgba(139, 92, 246, 0.25);
+    overflow: hidden;
+    color: #fff;
+    position: relative;
+}
+
+/* Diagonal gradient overlay for glossy ticket look */
+.ticket::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(115deg, transparent 20%, rgba(255, 255, 255, 0.03) 40%, rgba(255, 255, 255, 0.08) 50%, transparent 60%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* On Desktop side-by-side */
+@media (min-width: 768px) {
+    .ticket {
+        flex-direction: row;
+    }
+}
+
+.ticket-left,
+.ticket-right {
+    position: relative;
+    z-index: 1;
+    /* Above the gradient sheen */
+}
+
+.ticket-left {
+    padding: 2.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.ticket-branding {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+}
+
+.ticket-year {
+    background: rgba(139, 92, 246, 0.2);
+    color: var(--accent-1);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.ticket-attendee-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.info-group label {
+    display: block;
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    color: #a1a1aa;
+    margin-bottom: 0.3rem;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.info-group h4 {
+    font-size: 1.5rem;
+    margin: 0;
+    font-weight: 700;
+    color: #e4e4e7;
+    text-transform: uppercase;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.info-row p {
+    margin: 0;
+    font-size: 1rem;
+    color: #d4d4d8;
+    font-weight: 500;
+}
+
+.info-row p.highlight {
+    color: var(--accent-2);
+    font-weight: 700;
+}
+
+/* Dashed divider between left and right sections */
+.ticket-divider {
+    width: 100%;
+    height: 1px;
+    border-top: 2px dashed rgba(255, 255, 255, 0.2);
+    position: relative;
+}
+
+@media (min-width: 768px) {
+    .ticket-divider {
+        width: 1px;
+        height: auto;
+        border-top: none;
+        border-left: 2px dashed rgba(255, 255, 255, 0.2);
+    }
+}
+
+/* Semi-circles at the ends of the divider to look like a tear-off stub */
+.ticket-divider::before,
+.ticket-divider::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: var(--bg-color);
+    border-radius: 50%;
+    z-index: 2;
+}
+
+@media (min-width: 768px) {
+    .ticket-divider::before {
+        top: -15px;
+        left: -16px;
+        border-bottom: 1px solid rgba(139, 92, 246, 0.4);
+    }
+
+    .ticket-divider::after {
+        bottom: -15px;
+        left: -16px;
+        border-top: 1px solid rgba(139, 92, 246, 0.4);
+    }
+}
+
+@media (max-width: 767px) {
+    .ticket-divider::before {
+        left: -15px;
+        top: -16px;
+        border-right: 1px solid rgba(139, 92, 246, 0.4);
+    }
+
+    .ticket-divider::after {
+        right: -15px;
+        top: -16px;
+        border-left: 1px solid rgba(139, 92, 246, 0.4);
+    }
+}
+
+
+.ticket-right {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 200px;
+    background: rgba(10, 10, 10, 0.4);
+}
+
+.qr-container {
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    /* Adding subtle drop shadow purely for aesthetic separation from dark bg */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.ticket-id-display {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-bottom: 1rem;
+}
+
+.ticket-id-display:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.id-text {
+    font-family: monospace;
+    font-size: 0.85rem;
+    color: #a1a1aa;
+    letter-spacing: 1px;
+}
+
+.scan-text {
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    color: var(--accent-1);
+    font-weight: 700;
+}
+
+.ticket-actions {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+    .ticket-actions {
+        flex-direction: column;
+    }
+}
+
+.action-btn {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
